@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leonardkrief <leonardkrief@student.42.f    +#+  +:+       +#+        */
+/*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 04:04:27 by lkrief            #+#    #+#             */
-/*   Updated: 2022/09/29 11:45:06 by leonardkrie      ###   ########.fr       */
+/*   Updated: 2022/11/14 21:49:19 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,21 @@ int	ft_put_base(long d, char *base, int len_base, int n)
 
 	size = ft_len_base(d, len_base);
 	nb_print = 0;
-	if (d < 0)
+	if (n > 0)
 	{
-		nb_print += ft_put_c('-');
-		n--;
-	}	
-	while (n > size)
-	{
-		nb_print += ft_put_c('0');
-		n--;
+		if (d < 0)
+		{
+			nb_print += ft_put_c('-');
+			n--;
+		}	
+		while (n > size)
+		{
+			nb_print += ft_put_c('0');
+			n--;
+		}
+		ft_put_positive_base(d, base, len_base);
+		nb_print += size;
 	}
-	ft_put_positive_base(d, base, len_base);
-	nb_print += size;
 	return (nb_print);
 }
 

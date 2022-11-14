@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leonardkrief <leonardkrief@student.42.f    +#+  +:+       +#+        */
+/*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 04:04:27 by lkrief            #+#    #+#             */
-/*   Updated: 2022/09/29 10:32:42 by leonardkrie      ###   ########.fr       */
+/*   Updated: 2022/11/14 22:02:53 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,21 @@ int	ft_put_p(void *p)
 	unsigned long long	a;
 	unsigned long long	b;
 
-	len = 1;
+	len = 0;
 	a = ((unsigned long long)p);
 	b = a;
-	while (b >= 16)
+	while (b > 0)
 	{
 		len++;
 		b /= 16;
 	}
-	len += ft_put_s("0x", 2);
-	ft_putullbase_fd(a, "0123456789abcdef", 16, 1);
+	if (p != NULL)
+	{
+		len += ft_put_s("0x", 2);
+		ft_putullbase_fd(a, "0123456789abcdef", 16, 1);
+	}
+	else
+		len += ft_put_s("(nil)", 5);
 	return (len);
 }
 

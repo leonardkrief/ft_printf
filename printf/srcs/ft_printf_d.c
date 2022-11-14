@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leonardkrief <leonardkrief@student.42.f    +#+  +:+       +#+        */
+/*   By: lkrief <lkrief@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 04:04:27 by lkrief            #+#    #+#             */
-/*   Updated: 2022/09/29 13:32:53 by leonardkrie      ###   ########.fr       */
+/*   Updated: 2022/11/14 21:45:18 by lkrief           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_seq_d(t_seq *s, long d)
 	}
 	else
 	{
-		s->len = ft_max(ft_len_base(d, 10), s->n_dot + (d < 0));
+		s->len = ft_max(ft_len_base(d, 10) - (d == 0), s->n_dot + (d < 0));
 		s->n -= s->len;
 		s->len += (s->space > 0 && d >= 0);
 		s->len += (s->plus > 0 && d >= 0 && s->space < 0);
